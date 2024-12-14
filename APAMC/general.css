@@ -15,6 +15,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 100;
 }
 
 header h1 {
@@ -35,6 +36,10 @@ nav ul {
 nav ul li {
     display: inline-block;
     margin: 0 20px;
+}
+
+#uq1 {
+    margin: 0 0 0 20px;
 }
 
 nav ul li a {
@@ -60,14 +65,14 @@ a {
 
 .breadcrum-list {
     border: 2px solid blue;
+    margin: 0 4%;
     font-size: 14px;
     opacity: 0.9;
     font-weight: 500;
     height: 25px;
-    width: 100%;
+    width: 92%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     word-spacing: 3px;
-
 }
