@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AP AMC</title>
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="general.css">
   <style>
     body {
       font-family: Arial;
@@ -14,12 +14,62 @@
       line-height: 1.4;
     }
 
+    .breadcrum-list ul {
+      list-style: none;
+    }
+
+    .breadcrum-list ul li {
+      display: inline-block;
+      margin: 0;
+    }
+
+    .breadcrum-list {
+      border: 2px solid blue;
+      margin-left: 4%;
+      font-size: 14px;
+      opacity: 0.9;
+      font-weight: 500;
+      height: 25px;
+      width: 96%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      word-spacing: 3px;
+
+    }
+
     .section-1 {
       border: 2px solid red;
       margin-top: 62px;
       width: 100%;
-      height: 1000px;
+      height: 700px;
       display: flex;
+      background-color: lightpink;
+      flex-direction: column;
+    }
+
+    .conatainer-2 {
+      border: 2px solid green;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .fundimg {
+      margin-left: 50px;
+    }
+
+    .fundtitle {
+      margin-left: 25px;
+      word-spacing: 3px;
+    }
+
+    .conatainer-3 {
+      border: 2px solid greenyellow;
+      width: 92%;
+      height: 650px;
+      margin: 0 4%;
     }
   </style>
 </head>
@@ -41,7 +91,25 @@
   </header>
   <section id="securities" class="securities">
     <div class="section-1">
-
+      <div class="breadcrum-list">
+        <ul>
+          <li><a href="Home.html">Home ></a></li>
+          <li><a href="funds.html">funds</a></li>
+        </ul>
+      </div>
+      <div class="conatainer-2">
+        <div class="fundimg">
+          <img src="Asset/1712412180657.jpg" alt="" style="width: 50px;">
+        </div>
+        <div class="fundtitle">
+          <H2>AP AMC Fund Direct Growth</H2>
+        </div>
+      </div>
+      <div class="conatainer-3">
+        <iframe title="NAV BI" width="100%" height="100%"
+          src="https://app.powerbi.com/reportEmbed?reportId=74186a41-eab0-4a61-948e-a3f46c7f425f&autoAuth=true&ctid=9fc2f44c-77d7-4911-8267-8da441f7de31"
+          frameborder="0" allowFullScreen="true"></iframe>
+      </div>
     </div>
   </section>
 </body>
