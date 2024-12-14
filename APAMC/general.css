@@ -50,6 +50,7 @@ a {
 
 .breadcrum-list ul {
     list-style: none;
+    padding: 8px;
 }
 
 .breadcrum-list ul li {
@@ -59,12 +60,11 @@ a {
 
 .breadcrum-list {
     border: 2px solid blue;
-    margin-left: 4%;
     font-size: 14px;
     opacity: 0.9;
     font-weight: 500;
     height: 25px;
-    width: 96%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
