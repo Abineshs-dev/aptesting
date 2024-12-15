@@ -13,7 +13,8 @@
             padding: 0;
             line-height: 1.4;
         }
-        input{
+
+        input {
             padding: 10px;
             margin-bottom: 10px;
         }
@@ -60,8 +61,11 @@
         </div>
         <div class="section-1">
             <h1>Enter Code</h1>
-            <input type="text" id="codeInput" placeholder="Enter code (e.g., FA001)" />
+            <input type="text" id="codeInput" placeholder="Enter code (e.g., FA1001)" />
             <button onclick="checkCode()">Submit</button>
+        </div>
+        <div>
+            <a href="Users/admin1.html">A</a><a href="Users/d2.html">C</a>
         </div>
 </body>
 
@@ -70,12 +74,18 @@
     function checkCode() {
         const inputCode = document.getElementById("codeInput").value.trim();
 
-        if (inputCode === "FA001") {
-            window.location.href = "user1.html";
-        } else if (inputCode === "FA002") {
+        if (inputCode === "FA1001") {
+            window.location.href = "Users/user1.html";
+        } else if (inputCode === "FA1002") {
             window.location.href = "user2.html";
-        } else if (inputCode === "FA003" || inputCode === "FA004") {
-            alert("Visit this page: https://example.com/page3");
+        } else if (inputCode === "FA1003") {
+            window.location.href = "user3.html";
+        } else if (inputCode === "FA1004") {
+            window.location.href = "user4.html";
+        } else if (inputCode === "FA1005") {
+            window.location.href = "Users/user1.html";
+        } else if (inputCode === "FA1006") {
+            window.location.href = "user6.html";
         } else {
             alert("Invalid code. Please try again.");
         }
