@@ -13,6 +13,10 @@
             padding: 0;
             line-height: 1.4;
         }
+        input{
+            padding: 10px;
+            margin-bottom: 10px;
+        }
 
         #uq2 {
             margin-top: 62px;
@@ -26,6 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -50,17 +55,29 @@
         <div id="uq2" class="breadcrum-list">
             <ul>
                 <li><a href="Home.html">Home ></a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="client.html">Profile</a></li>
             </ul>
         </div>
         <div class="section-1">
-            <div class="stock-details">
-                <iframe
-                    src="https://script.google.com/macros/s/AKfycbwvRvlYss80sj6tL9Af4-qmOxC_n1-jgVyjBIl0MuTEtHlY1Y-aGc7-GV-QP1V3KcW-0Q/exec"
-                    width="700px" height="450px" frameborder="0">
-                </iframe>
-            </div>
+            <h1>Enter Code</h1>
+            <input type="text" id="codeInput" placeholder="Enter code (e.g., FA001)" />
+            <button onclick="checkCode()">Submit</button>
         </div>
 </body>
 
 </html>
+<script>
+    function checkCode() {
+        const inputCode = document.getElementById("codeInput").value.trim();
+
+        if (inputCode === "FA001") {
+            window.location.href = "user1.html";
+        } else if (inputCode === "FA002") {
+            window.location.href = "user2.html";
+        } else if (inputCode === "FA003" || inputCode === "FA004") {
+            alert("Visit this page: https://example.com/page3");
+        } else {
+            alert("Invalid code. Please try again.");
+        }
+    }
+</script>
