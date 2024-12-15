@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Page</title>
+</head>
+<body>
+  <h2>Client Investment Details</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Fund Name</th>
+        <th>Units</th>
+        <th>Current NAV</th>
+        <th>Current Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fund A</td>
+        <td id="units"></td>
+        <td id="nav"></td>
+        <td id="currentValue"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    window.onload = function() {
+      const fundNAV = localStorage.getItem('fundNAV');
+      const numUnits = localStorage.getItem('numUnits');
+
+      if (fundNAV && numUnits) {
+        // Set values in the table
+        document.getElementById('nav').innerText = fundNAV;
+        document.getElementById('units').innerText = numUnits;
+
+        // Calculate and display the current value
+        const currentValue = (fundNAV * numUnits).toFixed(2);
+        document.getElementById('currentValue').innerText = currentValue;
+      } else {
+        alert('No data available. Please enter NAV and units in the admin panel first.');
+      }
+    }
+  </script>
+</body>
+</html>

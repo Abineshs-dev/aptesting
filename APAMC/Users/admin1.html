@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h2>Admin Panel</h2>
+  <form id="navForm">
+    <label for="fundNAV">Enter Fund NAV: </label>
+    <input type="number" id="fundNAV" step="0.01" placeholder="Enter NAV" required>
+    <br><br>
+    <label for="numUnits">Enter Number of Units: </label>
+    <input type="number" id="numUnits" placeholder="Enter Number of Units" value="100" required>
+    <br><br>
+    <button type="button" onclick="saveData()">Save Data</button>
+  </form>
+
+  <script>
+    function saveData() {
+      const fundNAV = document.getElementById('fundNAV').value;
+      const numUnits = document.getElementById('numUnits').value;
+
+      // Store the data in localStorage (for demo purposes, can be saved to a database in real-world apps)
+      localStorage.setItem('fundNAV', fundNAV);
+      localStorage.setItem('numUnits', numUnits);
+
+      alert('Data saved successfully!');
+    }
+  </script>
+</body>
+</html>
