@@ -1,97 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Profile</title>
+    <title>Mutual Fund Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f5f5f5;
         }
-        .profile-container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        .profile-header {
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
             text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
         }
-        .profile-header img {
-            width: 120px;
-            height: 120px;
+
+        .profile-section img {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #007bff;
+            margin-right: 20px;
         }
-        .profile-header h2 {
-            margin: 10px 0;
+
+        .portfolio-summary,
+        .mutual-funds,
+        .performance-analysis {
+            margin-bottom: 20px;
+        }
+
+        .portfolio-summary h3,
+        .mutual-funds h3,
+        .performance-analysis h3 {
             color: #333;
         }
-        .profile-header p {
-            margin: 0;
-            color: #666;
-            font-size: 14px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
-        .profile-details {
+
+        table th,
+        table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .performance-chart {
+            text-align: center;
             margin-top: 20px;
         }
-        .profile-details h3 {
-            margin-bottom: 10px;
-            color: #007bff;
-            border-bottom: 2px solid #f4f4f9;
-            padding-bottom: 5px;
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        .profile-details ul {
-            list-style-type: none;
-            padding: 0;
-            color: #333;
-        }
-        .profile-details ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .profile-details ul li span {
-            font-weight: bold;
+
+        .btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
-    <div class="profile-container">
-        <div class="profile-header">
-            <img src="https://via.placeholder.com/120" alt="Profile Picture">
-            <h2>John Doe</h2>
-            <p>Web Developer | Tech Enthusiast</p>
+    <header>
+        <h1>Client Mutual Fund Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="profile/White coat profile.png" alt="Profile Picture">
+            <div>
+                <h2>Abinesh</h2>
+                <p>Folio Number:100002</p>
+                <p>Email: abisomu0707@gmail.com</p>
+            </div>
         </div>
-        <div class="profile-details">
-            <h3>Personal Information</h3>
-            <ul>
-                <li><span>Full Name:</span> John Doe</li>
-                <li><span>Email:</span> john.doe@example.com</li>
-                <li><span>Phone:</span> +1 234 567 890</li>
-                <li><span>Location:</span> New York, USA</li>
-            </ul>
 
-            <h3>Skills</h3>
-            <ul>
-                <li>HTML, CSS, JavaScript</li>
-                <li>React, Angular</li>
-                <li>Node.js, Express</li>
-                <li>SQL, MongoDB</li>
-            </ul>
+        <!-- Portfolio Summary -->
+        <div class="portfolio-summary">
+            <h3>Portfolio Summary</h3>
+            <p>Total Investment: <strong>₹42,688.32</strong></p>
+            <p>Current Value: <strong>₹46,364.38</strong></p>
+            <p>Overall Gain/Loss: <strong style="color: green;">+9%</strong></p>
+        </div>
 
-            <h3>About</h3>
-            <p>
-                Passionate about creating user-friendly web applications and learning new technologies.
-                Always ready to take on challenges and contribute to innovative projects.
-            </p>
+        <!-- Mutual Funds Table -->
+        <div class="mutual-funds">
+            <h3>Your Mutual Funds</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fund Name</th>
+                        <th>Invested Amount</th>
+                        <th>Avg NAV</th>
+                        <th>Units</th>
+                        <th>Current Value</th>
+                        <th>Returns</th>
+                        <th>Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AP AMC Fund Direct Growth</td>
+                        <td>₹2,600</td>
+                        <td id="nav">10.82</td>
+                        <td id="units">3,946.707</td>
+                        <td id="currentValue">₹46,364.38</td>
+                        <td style="color: green;">+₹3,676</td>
+                        <td style="color: green;">+9%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Performance Analysis -->
+        <div class="performance-analysis">
+            <h3>Performance Analysis</h3>
+            <div class="performance-chart">
+                <a href="Home.html">
+                    <p>(Redirect to Home)</p>
+                </a>
+                <div>
+                    <a href="navupdate.html">
+                        <p>Go to admin portal</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div>
+            <a href="#" class="btn">Add Funds</a>
+            <a href="#" class="btn">Redeem</a>
         </div>
     </div>
 </body>
+
 </html>
+<script>
+    window.onload = function () {
+        const fundNAV = localStorage.getItem('fundNAV');
+        const numUnits = localStorage.getItem('numUnits');
+
+        if (fundNAV && numUnits) {
+            // Set values in the table
+            document.getElementById('nav').innerText = fundNAV;
+            document.getElementById('units').innerText = numUnits;
+
+            // Calculate and display the current value
+            const currentValue = (fundNAV * numUnits).toFixed(2);
+            document.getElementById('currentValue').innerText = currentValue;
+        } else {
+            alert('No data available. Please enter NAV and units in the admin panel first.');
+        }
+    }
+</script>

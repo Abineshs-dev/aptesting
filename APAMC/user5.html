@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Fund Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-section img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .portfolio-summary,
+        .mutual-funds,
+        .performance-analysis {
+            margin-bottom: 20px;
+        }
+
+        .portfolio-summary h3,
+        .mutual-funds h3,
+        .performance-analysis h3 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th,
+        table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .performance-chart {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Client Mutual Fund Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="profile/1731244703650.jpg" alt="Profile Picture">
+            <div>
+                <h2>Gokul</h2>
+                <p>Folio Number:100005</p>
+                <p>Email: gokulravii1620@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Portfolio Summary -->
+        <div class="portfolio-summary">
+            <h3>Portfolio Summary</h3>
+            <p>Total Investment: <strong>₹1,000.00</strong></p>
+            <p>Current Value: <strong>₹1,061.02</strong></p>
+            <p>Overall Gain/Loss: <strong style="color: green;">+6%</strong></p>
+        </div>
+
+        <!-- Mutual Funds Table -->
+        <div class="mutual-funds">
+            <h3>Your Mutual Funds</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fund Name</th>
+                        <th>Invested Amount</th>
+                        <th>Avg NAV</th>
+                        <th>Units</th>
+                        <th>Current Value</th>
+                        <th>Returns</th>
+                        <th>Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AP AMC Fund Direct Growth</td>
+                        <td>₹1,000</td>
+                        <td>11.07</td>
+                        <td>90.318
+                        </td>
+                        <td>₹1,061.02</td>
+                        <td style="color: green;">+₹61</td>
+                        <td style="color: green;">+6%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Performance Analysis -->
+        <div class="performance-analysis">
+            <h3>Performance Analysis</h3>
+            <div class="performance-chart">
+                <a href="Home.html">
+                    <p>(Redirect to Home)</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div>
+            <a href="#" class="btn">Add Funds</a>
+            <a href="#" class="btn">Redeem</a>
+        </div>
+    </div>
+</body>
+
+</html>
