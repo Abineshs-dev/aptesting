@@ -25,7 +25,7 @@
 
         .section-1 {
             border: 2px solid rgb(237, 6, 6);
-            height: 700px;
+            height: 500px;
             margin: 0 4%;
             width: 92%;
             display: flex;
@@ -39,7 +39,9 @@
 <body>
     <header>
         <div class="container-1">
-            <h1>AP AMC</h1>
+            <a href="Home.html" style="color: aliceblue">
+                <h1>AP AMC</h1>
+            </a>
             <nav>
                 <ul>
                     <li><a href="Home.html">Home</a></li>
@@ -87,4 +89,13 @@
             alert("Invalid code. Please try again.");
         }
     }
+    // You can disable right-click on your website to prevent users from accessing the "Inspect" option easily:
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.key === "U")) {
+            event.preventDefault();
+        }
+    });
+
+
 </script>

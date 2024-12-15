@@ -101,20 +101,20 @@
     <div class="container">
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="profile/White coat profile.png" alt="Profile Picture">
+            <img src="Asset/1712412180657.jpg" alt="Profile Picture">
             <div>
-                <h2>Abinesh</h2>
-                <p>Folio Number:100002</p>
-                <p>Email: abisomu0707@gmail.com</p>
+                <h2>Danny</h2>
+                <p>Folio Number:100006</p>
+                <p>Email: dannyfrancis051104@gmail.com</p>
             </div>
         </div>
 
         <!-- Portfolio Summary -->
         <div class="portfolio-summary">
             <h3>Portfolio Summary</h3>
-            <p>Total Investment: <strong>₹42,688.32</strong></p>
-            <p>Current Value: <strong>₹46,364.38</strong></p>
-            <p>Overall Gain/Loss: <strong style="color: green;">+9%</strong></p>
+            <p>Total Investment: <strong>₹200</strong></p>
+            <p>Current Value: <strong>₹202.48</strong></p>
+            <p>Overall Gain/Loss: <strong style="color: green;">+1%</strong></p>
         </div>
 
         <!-- Mutual Funds Table -->
@@ -135,12 +135,12 @@
                 <tbody>
                     <tr>
                         <td>AP AMC Fund Direct Growth</td>
-                        <td>₹42,688.32</td>
-                        <td id="nav">10.82</td>
-                        <td id="units">3,946.707</td>
-                        <td id="currentValue">₹46,364.38</td>
-                        <td style="color: green;">+₹3,676</td>
-                        <td style="color: green;">+9%</td>
+                        <td>₹200</td>
+                        <td>11.30</td>
+                        <td>17.698</td>
+                        <td>₹202.48</td>
+                        <td style="color: green;">+₹2</td>
+                        <td style="color: green;">+1%</td>
                     </tr>
                 </tbody>
             </table>
@@ -153,11 +153,6 @@
                 <a href="Home.html">
                     <p>(Redirect to Home)</p>
                 </a>
-                <div>
-                    <a href="navupdate.html">
-                        <p>Go to admin portal</p>
-                    </a>
-                </div>
             </div>
         </div>
 
@@ -170,21 +165,3 @@
 </body>
 
 </html>
-<script>
-    window.onload = function () {
-        const fundNAV = localStorage.getItem('fundNAV');
-        const numUnits = localStorage.getItem('numUnits');
-
-        if (fundNAV && numUnits) {
-            // Set values in the table
-            document.getElementById('nav').innerText = fundNAV;
-            document.getElementById('units').innerText = numUnits;
-
-            // Calculate and display the current value
-            const currentValue = (fundNAV * numUnits).toFixed(2);
-            document.getElementById('currentValue').innerText = currentValue;
-        } else {
-            alert('No data available. Please enter NAV and units in the admin panel first.');
-        }
-    }
-</script>
