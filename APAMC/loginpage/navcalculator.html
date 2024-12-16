@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAV Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .admin-panel, .client-panel {
+            margin-bottom: 20px;
+        }
+        .admin-panel input {
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <h2>Admin Panel</h2>
+        <label for="navInput">Enter Today's NAV:</label>
+        <input type="number" id="navInput" placeholder="Enter NAV" step="0.01">
+    </div>
+
+    <!-- Client Page -->
+    <div class="client-panel">
+        <h2>Client Page</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Number of Units</th>
+                    <th>Current Value</th>
+                </tr>
+            </thead>
+            <tbody id="clientTableBody">
+                <!-- Table rows will be dynamically generated -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Default client data
+        const clients = [
+            { name: "Prakasham", units: 260 },
+                   ];
+
+        const navInput = document.getElementById('navInput');
+        const clientTableBody = document.getElementById('clientTableBody');
+
+        // Function to render the client table
+        function renderTable(nav) {
+            clientTableBody.innerHTML = '';
+            clients.forEach(client => {
+                const currentValue = (nav * client.units).toFixed(2);
+                const row = `<tr>
+                                <td>${client.name}</td>
+                                <td>${client.units}</td>
+                                <td>${nav ? currentValue : 'N/A'}</td>
+                            </tr>`;
+                clientTableBody.innerHTML += row;
+            });
+        }
+
+        // Event listener for NAV input
+        navInput.addEventListener('input', (event) => {
+            const nav = parseFloat(event.target.value);
+            renderTable(nav);
+        });
+
+        // Initial rendering with no NAV
+        renderTable(null);
+    </script>
+
+</body>
+</html>

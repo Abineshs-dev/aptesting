@@ -11,7 +11,6 @@
             font-family: Arial;
             margin: 0;
             padding: 0;
-            line-height: 1.4;
         }
 
         input {
@@ -23,15 +22,51 @@
             margin-top: 62px;
         }
 
-        .section-1 {
-            border: 2px solid rgb(237, 6, 6);
-            height: 500px;
-            margin: 0 4%;
-            width: 92%;
+        body {
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            line-height: 1.4;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            margin-left: 1.8%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
@@ -55,38 +90,36 @@
         </div>
     </header>
     <section id="contact" class="contact">
-        <div id="uq2" class="breadcrum-list">
-            <ul>
-                <li><a href="Home.html">Home ></a></li>
-                <li><a href="client.html">Profile</a></li>
-            </ul>
-        </div>
-        <div class="section-1">
-            <h1>Enter Code</h1>
-            <input type="text" id="codeInput" placeholder="Enter code (e.g., FA1001)" />
-            <button onclick="checkCode()">Submit</button>
+        <div class="login-container">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Enter Username">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="login()">Login</button>
         </div>
 </body>
 
 </html>
 <script>
-    function checkCode() {
-        const inputCode = document.getElementById("codeInput").value.trim();
+    // Hardcoded user data
+    const users = {
+        FA1001: { password: "1001", redirectUrl: "user1.html" },
+        FA1002: { password: "1002", redirectUrl: "user2.html" },
+        FA1003: { password: "1003", redirectUrl: "user3.html" },
+        FA1004: { password: "1004", redirectUrl: "user4.html" },
+        FA1005: { password: "1005", redirectUrl: "user5.html" },
+        FA1006: { password: "1006", redirectUrl: "user6.html" },
+    }
+    function login() {
+        // Get input values
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-        if (inputCode === "FA1001") {
-            window.location.href = "user1.html";
-        } else if (inputCode === "FA1002") {
-            window.location.href = "user2.html";
-        } else if (inputCode === "FA1003") {
-            window.location.href = "user3.html";
-        } else if (inputCode === "FA1004") {
-            window.location.href = "user4.html";
-        } else if (inputCode === "FA1005") {
-            window.location.href = "user5.html";
-        } else if (inputCode === "FA1006") {
-            window.location.href = "user6.html";
+        // Validate credentials
+        if (users[username] && users[username].password === password) {
+            // Redirect to the respective profile page
+            window.location.href = users[username].redirectUrl;
         } else {
-            alert("Invalid code. Please try again.");
+            alert("Invalid username or password");
         }
     }
     // You can disable right-click on your website to prevent users from accessing the "Inspect" option easily:
