@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .details {
+            background-color: #fff;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Payment Page</h2>
+    <div class="details">
+        <p><strong>Investment Amount:</strong> ₹<span id="amount"></span></p>
+        <p><strong>UPI ID:</strong> <span id="upiId"></span></p>
+        <p><strong>User mail:</strong> <span id="userRef"></span></p>
+        <p><em>This is a simulated payment page.</em></p>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('amount').textContent = urlParams.get('amount');
+        document.getElementById('upiId').textContent = urlParams.get('upiId');
+        document.getElementById('userRef').textContent = urlParams.get('userRef');
+    </script>
+</body>
+</html>

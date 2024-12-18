@@ -81,6 +81,98 @@
       background-color: lightpink;
       flex-direction: column;
     }
+
+    .container {
+      width: 300px;
+      width: 92%;
+      margin: 0 4%;
+      border: 1px solid #e61515;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown {
+      padding: 10px;
+    }
+
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .dropdown-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    #arrow {
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      border-top: 1px solid #ccc;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .dropdown-content ul {
+      margin: 10px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .dropdown-content li {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    /* Filter Options */
+    .filters {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      background-color: #333;
+    }
+
+    .filters select {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Holdings List */
+    .holdings {
+      padding: 10px;
+    }
+
+    .holding-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .holding-item div {
+      flex: 1;
+    }
+
+    .sector {
+      text-align: right;
+      color: #00ff7f;
+    }
   </style>
 </head>
 
@@ -97,7 +189,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li id="uq1"><a href="contact.html">Contact</a></li>
-          <li><a href="check.html">Profile</a></li>
+          <li><a href="user.html">Profile</a></li>
         </ul>
       </nav>
     </div>
@@ -125,9 +217,114 @@
       </div>
     </div>
     <div class="section-2">
-      <div class="conatainer-4"></div>
+      <div class="container">
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDetails()">
+            <h3>Holdings</h3>
+            <span id="arrow">▼</span>
+          </div>
+          <div class="dropdown-content" id="details">
+            <!-- Tiile -->
+              <h2>Top Holdings</h2>
+            <!-- Filter Options -->
+            <div class="filters">
+              <select id="filter-sector" onchange="filterHoldings()">
+                <option value="all">All Sectors</option>
+                <option value="Technology">Technology</option>
+                <option value="Automobile">Automobile</option>
+                <option value="Services">Services</option>
+                <option value="Financial">Financial</option>
+                <option value="Capital Goods">Capital Goods</option>
+              </select>
+
+              <select id="filter-volume" onchange="filterHoldings()">
+                <option value="all">All Volumes</option>
+                <option value="high">High Volume</option>
+                <option value="medium">Medium Volume</option>
+                <option value="low">Low Volume</option>
+              </select>
+
+              <select id="filter-cap" onchange="filterHoldings()">
+                <option value="all">All Market Caps</option>
+                <option value="large">Large Cap</option>
+                <option value="mid">Mid Cap</option>
+                <option value="small">Small Cap</option>
+              </select>
+            </div>
+
+            <!-- Holdings List -->
+            <div class="holdings" id="holdings-list">
+              <!-- Sample Holding Items -->
+              <div class="holding-item" data-sector="Technology" data-cap="large" data-volume="high">
+                <div>Coforge Ltd.</div>
+                <div class="sector">Technology</div>
+              </div>
+
+              <div class="holding-item" data-sector="Automobile" data-cap="mid" data-volume="medium">
+                <div>Mahindra & Mahindra Ltd.</div>
+                <div class="sector">Automobile</div>
+              </div>
+
+              <div class="holding-item" data-sector="Services" data-cap="mid" data-volume="high">
+                <div>Zomato Ltd.</div>
+                <div class="sector">Services</div>
+              </div>
+
+              <div class="holding-item" data-sector="Capital Goods" data-cap="large" data-volume="medium">
+                <div>Polycab India Ltd.</div>
+                <div class="sector">Capital Goods</div>
+              </div>
+
+              <div class="holding-item" data-sector="Financial" data-cap="mid" data-volume="low">
+                <div>JIO Financial Services Ltd.</div>
+                <div class="sector">Financial</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </body>
+<script>
+  function toggleDetails() {
+    const details = document.getElementById('details');
+    const arrow = document.getElementById('arrow');
+
+    if (details.style.maxHeight) {
+      details.style.maxHeight = null;
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      details.style.maxHeight = details.scrollHeight + 'px';
+      arrow.style.transform = 'rotate(180deg)';
+    }
+  }
+  //The animated holdings
+  // Function to filter holdings
+  function filterHoldings() {
+    const sectorFilter = document.getElementById('filter-sector').value;
+    const volumeFilter = document.getElementById('filter-volume').value;
+    const capFilter = document.getElementById('filter-cap').value;
+
+    const holdings = document.querySelectorAll('.holding-item');
+
+    holdings.forEach(item => {
+      const sector = item.getAttribute('data-sector');
+      const volume = item.getAttribute('data-volume');
+      const cap = item.getAttribute('data-cap');
+
+      if (
+        (sectorFilter === 'all' || sector === sectorFilter) &&
+        (volumeFilter === 'all' || volume === volumeFilter) &&
+        (capFilter === 'all' || cap === capFilter)
+      ) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+</script>
 
 </html>

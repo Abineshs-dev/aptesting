@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AP AMC</title>
+    <link rel="stylesheet" href="general.css">
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #uq2 {
+            margin-top: 62px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.4;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            margin-left: 1.8%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-1">
+            <a href="Home.html" style="color: aliceblue">
+                <h1>AP AMC</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="funds.html">Funds</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li id="uq1"><a href="contact.html">Contact</a></li>
+                    <li><a href="check.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="contact" class="contact">
+        <div class="login-container">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Enter Username">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="login()">Login</button>
+        </div>
+</body>
+
+</html>
+<script>
+    // Hardcoded user data
+    const users = {
+        FA1001: { password: "1001", redirectUrl: "user1.html" },
+        FA1002: { password: "1002", redirectUrl: "user2.html" },
+        FA1003: { password: "1003", redirectUrl: "user3.html" },
+        FA1004: { password: "1004", redirectUrl: "user4.html" },
+        FA1005: { password: "1005", redirectUrl: "user5.html" },
+        FA1006: { password: "1006", redirectUrl: "user6.html" },
+    }
+    function login() {
+        // Get input values
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Validate credentials
+        if (users[username] && users[username].password === password) {
+            // Redirect to the respective profile page
+            window.location.href = users[username].redirectUrl;
+        } else {
+            alert("Invalid username or password");
+        }
+    }
+    // You can disable right-click on your website to prevent users from accessing the "Inspect" option easily:
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+        if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I") || (event.ctrlKey && event.key === "U")) {
+            event.preventDefault();
+        }
+    });
+
+
+</script>

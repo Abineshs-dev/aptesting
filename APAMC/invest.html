@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: whitesmoke;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .one-time {
+            background-color: #006400;
+        }
+
+        .start-sip {
+            background-color: #008080;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="investmentForm">
+        <h2>Invest Now</h2>
+        <label for="amount">Investment Amount (₹):</label>
+        <input type="number" id="amount" placeholder="Enter Amount" required>
+
+        <label for="upiId">UPI ID:</label>
+        <input type="text" id="upiId" placeholder="example@upi" required>
+
+        <label for="userRef">Email:</label>
+        <input type="email" id="userRef" placeholder="Email" required>
+
+        <!-- Action Buttons 
+        <div class="action-buttons">
+            <button class="one-time">One-time</button>
+            <button class="start-sip">Start SIP</button>
+        </div>
+        -->
+
+        <button type="submit">Proceed to Payment</button>
+    </form>
+
+    <script>
+        document.getElementById('investmentForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const amount = document.getElementById('amount').value;
+            const upiId = document.getElementById('upiId').value;
+            const userRef = document.getElementById('userRef').value;
+
+            // Save data in localStorage (to simulate saving to a database)
+            const investmentData = {
+                amount: amount,
+                upiId: upiId,
+                userRef: userRef,
+                time: new Date().toLocaleString()
+            };
+
+            let investments = JSON.parse(localStorage.getItem('investments')) || [];
+            investments.push(investmentData);
+            localStorage.setItem('investments', JSON.stringify(investments));
+
+            // Redirect to Payment Page
+            window.location.href = `payment.html?amount=${amount}&upiId=${upiId}&userRef=${userRef}`;
+        });
+    </script>
+</body>
+
+</html>

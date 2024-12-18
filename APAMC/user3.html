@@ -118,30 +118,28 @@
         </div>
 
         <!-- Mutual Funds Table -->
-        <div class="mutual-funds">
-            <h3>Your Mutual Funds</h3>
+        <header>Client Mutual Fund Portfolio</header>
+        <div class="container">
+            <h3>Fund Performance</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Fund Name</th>
                         <th>Invested Amount</th>
-                        <th>Avg NAV</th>
                         <th>Units</th>
+                        <th>Current NAV</th>
                         <th>Current Value</th>
                         <th>Returns</th>
-                        <th>Gain/Loss</th>
+                        <th>Returns (%)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-
-                        <td>AP AMC Fund Direct Growth</td>
-                        <td>₹22,258.32</td>
-                        <td>11.55</td>
-                        <td>1,926.401</td>
-                        <td>₹22,039.73</td>
-                        <td style="color: green;">-₹219</td>
-                        <td style="color: green;">-1%</td>
+                        <td id="investedAmount">22258.32</td>
+                        <td id="units">1,926.401</td>
+                        <td id="currentNAV">-</td>
+                        <td id="currentValue">-</td>
+                        <td id="returns">-</td>
+                        <td id="returnsPercentage">-</td>
                     </tr>
                 </tbody>
             </table>
@@ -159,10 +157,44 @@
 
         <!-- Action Buttons -->
         <div>
-            <a href="#" class="btn">Add Funds</a>
+            <a href="invest.html" class="btn">Add Funds</a>
             <a href="#" class="btn">Redeem</a>
         </div>
     </div>
 </body>
+<script>
+    const investedAmount = 22258.32; // Default invested amount
+    const units = 1926.401;   // Default units
+
+    function updatePortfolio() {
+        const nav = localStorage.getItem('fundNAV'); // Get updated NAV from localStorage
+
+        if (nav) {
+            const currentValue = (nav * units).toFixed(2);
+            const returns = (currentValue - investedAmount).toFixed(2);
+            const returnsPercentage = ((returns / investedAmount) * 100).toFixed(2);
+
+            // Update the table
+            document.getElementById('currentNAV').textContent = `₹${nav}`;
+            document.getElementById('currentValue').textContent = `₹${currentValue}`;
+            document.getElementById('returns').textContent = returns > 0 ? `+₹${returns}` : `-₹${Math.abs(returns)}`;
+            document.getElementById('returns').style.color = returns > 0 ? 'green' : 'red';
+            document.getElementById('returnsPercentage').textContent = `${returnsPercentage}%`;
+            document.getElementById('returnsPercentage').style.color = returns > 0 ? 'green' : 'red';
+
+            // Highlight updates
+            document.querySelectorAll('td').forEach(td => {
+                td.classList.add('highlight');
+                setTimeout(() => td.classList.remove('highlight'), 500);
+            });
+        }
+    }
+
+    // Call updatePortfolio when the page loads
+    updatePortfolio();
+
+    // Update portfolio every 2 seconds to reflect NAV updates
+    setInterval(updatePortfolio, 20000);
+</script>
 
 </html>

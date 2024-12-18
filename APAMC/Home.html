@@ -58,6 +58,29 @@
       justify-content: center;
       flex-direction: column;
     }
+    #cookie-message {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      z-index: 1000;
+      display: none; /* Initially hidden */
+    }
+    #cookie-message button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #cookie-message button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 
@@ -74,7 +97,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li id="uq1"><a href="contact.html">Contact</a></li>
-          <li><a href="check.html">Profile</a></li>
+          <li><a href="user.html">Profile</a></li>
         </ul>
         </ul>
       </nav>
@@ -104,6 +127,32 @@
         <button type="button"><a href="login.html">Sign up</a></button>
       </div>
   </section>
+  <section>
+    <div id="cookie-message">
+      We use cookies to ensure you get the best experience on our website.
+      <button onclick="acceptCookies()">Got it!</button>
+    </div>
+  </section>
+
+  <script>
+    // Function to show the cookie message
+    function showCookieMessage() {
+      document.getElementById('cookie-message').style.display = 'block';
+    }
+
+    // Function to handle cookie acceptance
+    function acceptCookies() {
+      document.getElementById('cookie-message').style.display = 'none';
+      // Optionally save the consent to localStorage or cookies for persistence
+      // localStorage.setItem('cookieConsent', 'true');
+    }
+
+    // Display the cookie message every time (or check consent persistence)
+    // if (!localStorage.getItem('cookieConsent')) {
+    showCookieMessage();
+    // }
+  </script>
+
 </body>
 
 </html>
