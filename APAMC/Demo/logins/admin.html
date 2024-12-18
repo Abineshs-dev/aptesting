@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Mutual Fund</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00e676;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #00e676;
+        }
+
+        tr:nth-child(even) {
+            background-color: #292929;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Panel - Client Investment Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Amount (₹)</th>
+                    <th>Investment Type</th>
+                    <th>UPI ID</th>
+                    <th>Email</th>
+                    <th>Submitted On</th>
+                </tr>
+            </thead>
+            <tbody id="investmentTable">
+                <!-- Data will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch data from localStorage
+        const investments = JSON.parse(localStorage.getItem('investments')) || [];
+        const tableBody = document.getElementById('investmentTable');
+
+        // Populate table with investment data
+        investments.forEach(investment => {
+            const row = `
+                <tr>
+                    <td>${investment.amount}</td>
+                    <td>${investment.investmentType}</td>
+                    <td>${investment.upi}</td>
+                    <td>${investment.email}</td>
+                    <td>${investment.timestamp}</td>
+                </tr>
+            `;
+            tableBody.insertAdjacentHTML('beforeend', row);
+        });
+    </script>
+</body>
+</html>

@@ -5,8 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
+  <link rel="stylesheet" href="general.css">
   <style>
     body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .body {
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -55,33 +63,39 @@
 </head>
 
 <body>
-  <div class="login-container">
-    <h2>Admin Login</h2>
-    <input type="text" id="username" placeholder="Enter Username">
-    <input type="password" id="password" placeholder="Enter Password">
-    <button onclick="login()">Login</button>
+  <div class="breadcrum-list">
+    <ul>
+      <li><a href="Home.html">Home ></a></li>
+      <li><a href="Login-admin.html">Admin login</a></li>
+    </ul>
   </div>
-
-  <script>
-    // Hardcoded user data
-    const users = {
-      apamc: { password: "notu", redirectUrl: "admin.html" },
-      apamc: { password: "notu", redirectUrl: "admin.html" },
-    }
-    function login() {
-      // Get input values
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      // Validate credentials
-      if (users[username] && users[username].password === password) {
-        // Redirect to the respective profile page
-        window.location.href = users[username].redirectUrl;
-      } else {
-        alert("Invalid username or password");
-      }
-    }
-  </script>
+  <div class="body">
+    <div class="login-container">
+      <h2>Admin Login</h2>
+      <input type="text" id="username" placeholder="Enter Username">
+      <input type="password" id="password" placeholder="Enter Password">
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
 </body>
+<script>
+  // Hardcoded user data
+  const users = {
+    apamc: { password: "notu", redirectUrl: "NAV-admin.html" },
+  }
+  function login() {
+    // Get input values
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // Validate credentials
+    if (users[username] && users[username].password === password) {
+      // Redirect to the respective profile page
+      window.location.href = users[username].redirectUrl;
+    } else {
+      alert("Invalid username or password");
+    }
+  }
+</script>
 
 </html>
