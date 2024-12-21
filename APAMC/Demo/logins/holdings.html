@@ -3,154 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holdings Table</title>
+    <title>Dynamic Equity Sector Allocation</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff; /* White background */
-            color: #000; /* Black text */
+            background-color: #111;
+            color: #fff;
         }
 
         .container {
-            width: 90%;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #f9f9f9; /* Light gray container */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .admin-panel {
+            width: 40%;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .chart-container {
+            width: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+            padding: 20px;
             border-radius: 8px;
         }
 
         h2 {
-            text-align: center;
-            color: #000; /* Black header */
+            margin-top: 0;
         }
 
-        table {
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
             width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0;
-            background-color: #fff; /* White table background */
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
         }
 
-        table, th, td {
-            border: 1px solid #ddd; /* Light gray borders */
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            color: #000; /* Black text */
+        button:hover {
+            background-color: #218838;
         }
 
-        th {
-            background-color: #f2f2f2; /* Light gray header background */
-            color: #000; /* Black header text */
+        canvas {
+            background-color: #222;
+            border-radius: 10px;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9; /* Light gray for even rows */
-        }
-
-        tr:hover {
-            background-color: #f1f1f1; /* Slight hover effect */
+        .note {
+            font-size: 0.9em;
+            color: #bbb;
         }
     </style>
 </head>
 <body>
+    <h1 style="text-align: center;">Equity Sector Allocation</h1>
     <div class="container">
-        <h2>Holdings (15)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Sector</th>
-                    <th>Instrument</th>
-                    <th>Market Cap</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>MANAPPURAM FINANCE LTD</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>7,200.00</td>
-                </tr>
-                <tr>
-                    <td>TATA MOTORS LIMITED</td>
-                    <td>Automobile</td>
-                    <td>Equity</td>
-                    <td>6,895.00</td>
-                </tr>
-                <tr>
-                    <td>DRREDDY</td>
-                    <td>Healthcare</td>
-                    <td>Equity</td>
-                    <td>6,662.00</td>
-                </tr>
-                <tr>
-                    <td>IDFC FIRST BANK LIMITED</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>1,845.00</td>
-                </tr>
-                <tr>
-                    <td>NIP IND ETF GOLD BEES</td>
-                    <td>Commodities</td>
-                    <td>ETF</td>
-                    <td>1,850.00</td>
-                </tr>
-                <tr>
-                    <td>KARNATAKA BANK LIMITED</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>5,170.00</td>
-                </tr>
-                <tr>
-                    <td>IDFC</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>2,235.00</td>
-                </tr>
-                <tr>
-                    <td>ITC LTD</td>
-                    <td>Consumer staples</td>
-                    <td>Equity</td>
-                    <td>3,180.00</td>
-                </tr>
-                <tr>
-                    <td>THE SOUTH INDIAN BANK LTD</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>25.00</td>
-                </tr>
-                <tr>
-                    <td>EASY TRIP PLANNERS LTD</td>
-                    <td>Services</td>
-                    <td>Equity</td>
-                    <td>177.88</td>
-                </tr>
-                <tr>
-                    <td>NMDC STEEL LTD</td>
-                    <td>Metals & Mining</td>
-                    <td>Equity</td>
-                    <td>121.00</td>
-                </tr>
-                <tr>
-                    <td>RATTANINDIA POWER</td>
-                    <td>Power</td>
-                    <td>Equity</td>
-                    <td>428.00</td>
-                </tr>
-                <tr>
-                    <td>BAJAJ HOUSING FINANCE</td>
-                    <td>Financial</td>
-                    <td>Equity</td>
-                    <td>23,000.00</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Admin Panel -->
+        <div class="admin-panel">
+            <h2>Admin Panel</h2>
+            <form id="dataForm">
+                <label for="services">Services (%)</label>
+                <input type="number" id="services" placeholder="18.6" required>
+
+                <label for="healthcare">Healthcare (%)</label>
+                <input type="number" id="healthcare" placeholder="18.3" required>
+
+                <label for="others">Others (%)</label>
+                <input type="number" id="others" placeholder="18.0" required>
+
+                <label for="financial">Financial (%)</label>
+                <input type="number" id="financial" placeholder="17.1" required>
+
+                <label for="energy">Energy (%)</label>
+                <input type="number" id="energy" placeholder="14.3" required>
+
+                <label for="consumer">Consumer Staples (%)</label>
+                <input type="number" id="consumer" placeholder="7.8" required>
+
+                <label for="chemicals">Chemicals (%)</label>
+                <input type="number" id="chemicals" placeholder="6.0" required>
+
+                <button type="button" onclick="updateChart()">Update Chart</button>
+                <p class="note">Enter values as percentages. Ensure they sum up close to 100%.</p>
+            </form>
+        </div>
+
+        <!-- Chart Display -->
+        <div class="chart-container">
+            <canvas id="equityChart" width="400" height="400"></canvas>
+        </div>
     </div>
+
+    <script>
+        // Initial Data
+        const data = {
+            labels: ["Services", "Healthcare", "Others", "Financial", "Energy", "Consumer Staples", "Chemicals"],
+            datasets: [{
+                label: 'Equity Sector Allocation',
+                data: [18.6, 18.3, 18.0, 17.1, 14.3, 7.8, 6.0],
+                backgroundColor: [
+                    '#a3e635', // Services - Light Green
+                    '#14b8a6', // Healthcare - Teal
+                    '#6366f1', // Others - Indigo
+                    '#fbbf24', // Financial - Yellow
+                    '#9333ea', // Energy - Purple
+                    '#f43f5e', // Consumer Staples - Red
+                    '#818cf8'  // Chemicals - Light Blue
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        // Chart Initialization
+        const ctx = document.getElementById('equityChart').getContext('2d');
+        let equityChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: 'white' }
+                    }
+                }
+            }
+        });
+
+        // Function to Update Chart
+        function updateChart() {
+            const services = parseFloat(document.getElementById('services').value) || 0;
+            const healthcare = parseFloat(document.getElementById('healthcare').value) || 0;
+            const others = parseFloat(document.getElementById('others').value) || 0;
+            const financial = parseFloat(document.getElementById('financial').value) || 0;
+            const energy = parseFloat(document.getElementById('energy').value) || 0;
+            const consumer = parseFloat(document.getElementById('consumer').value) || 0;
+            const chemicals = parseFloat(document.getElementById('chemicals').value) || 0;
+
+            const newData = [services, healthcare, others, financial, energy, consumer, chemicals];
+
+            // Update Chart Data
+            equityChart.data.datasets[0].data = newData;
+            equityChart.update();
+        }
+    </script>
 </body>
 </html>

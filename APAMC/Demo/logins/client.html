@@ -3,227 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mutual Fund SIP</title>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Equity Sector Allocation</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* General Reset */
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-        }
-
-        /* Container */
-        .container {
-            max-width: 500px;
-            margin: 50px auto;
-            background: #1e1e1e;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .title {
-            font-size: 1.5rem;
-            color: #00e676;
-            margin-bottom: 10px;
-        }
-
-        .tab {
-            display: flex;
-            border-bottom: 2px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .tab button {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 10px;
-            font-size: 1rem;
-            color: #777;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .tab button.active {
-            color: #00e676;
-            border-bottom: 2px solid #00e676;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #aaa;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            background: #333;
+            background-color: #111;
             color: #fff;
-            font-size: 1rem;
-        }
-
-        .auto-pay {
-            background: #292929;
-            padding: 10px;
-            border-radius: 8px;
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
             margin-bottom: 20px;
         }
 
-        .auto-pay img {
-            width: 30px;
-            margin-right: 10px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        button {
-            flex: 1;
-            margin: 5px;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            color: #fff;
-            transition: background 0.3s ease;
-        }
-
-        .add-to-cart {
-            background: #333;
-        }
-
-        .add-to-cart:hover {
-            background: #444;
-        }
-
-        .start-sip {
-            background: #00e676;
-        }
-
-        .start-sip:hover {
-            background: #00c853;
-        }
+        
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="title">Mutual Fund SIP</div>
-    <!-- Tabs -->
-    <div class="tab">
-        <button id="monthlyTab" class="active" onclick="switchTab('monthly')">Monthly SIP</button>
-        <button id="oneTimeTab" onclick="switchTab('oneTime')">One-Time</button>
-    </div>
-
-    <!-- Input Fields -->
-    <div id="inputForm">
-        <div class="input-group">
-            <label for="sipAmount">SIP Amount (₹)</label>
-            <input type="number" id="sipAmount" placeholder="Enter SIP Amount">
-        </div>
-        <div class="input-group">
-            <label for="sipDate">Monthly SIP Date</label>
-            <input type="number" id="sipDate" placeholder="e.g., 24" min="1" max="31">
-        </div>
-
-        <!-- AutoPay Section -->
-        <div class="auto-pay">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="AutoPay">
-            <div>
-                <strong>Pay via AutoPay</strong><br>
-                <span>UNION BANK OF INDIA ••••0441</span>
-            </div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <button class="add-to-cart" onclick="addToCart()">ADD TO CART</button>
-            <button class="start-sip" onclick="startSIP()">START SIP</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Switch Tabs
-    function switchTab(tabName) {
-        if (tabName === 'monthly') {
-            document.getElementById('monthlyTab').classList.add('active');
-            document.getElementById('oneTimeTab').classList.remove('active');
-        } else {
-            document.getElementById('oneTimeTab').classList.add('active');
-            document.getElementById('monthlyTab').classList.remove('active');
-        }
-    }
-
-    // Add to Cart
-    function addToCart() {
-        alert('SIP details added to cart!');
-    }
-
-    // Start SIP
-    function startSIP() {
-        // Fetch Inputs
-        const sipAmount = document.getElementById('sipAmount').value;
-        const sipDate = document.getElementById('sipDate').value;
-
-        // Validate Inputs
-        if (!sipAmount || sipAmount <= 0) {
-            alert('Please enter a valid SIP amount.');
-            return;
-        }
-        if (!sipDate || sipDate < 1 || sipDate > 31) {
-            alert('Please enter a valid date between 1 and 31.');
-            return;
-        }
-
-        // Prepare Data to Send
-        const sipDetails = {
-            sipAmount: sipAmount,
-            sipDate: sipDate,
-            paymentMethod: 'AutoPay (Union Bank)'
-        };
-
-        console.log('SIP Details:', sipDetails);
-
-        // Simulate Sending Data to Admin Panel
-        saveDataToAdmin(sipDetails);
-
-        // Redirect to Payment Page
-        alert('Redirecting to Payment Page...');
-        window.location.href = 'https://paymentgateway.com/payment'; // Replace with your real payment link
-    }
-
-    // Mock function to simulate data being sent to admin
-    function saveDataToAdmin(data) {
-        console.log('Data sent to admin panel:', JSON.stringify(data));
-        // Simulate an API call
-        setTimeout(() => {
-            alert('SIP Details successfully stored in the Admin Panel!');
-        }, 1000);
-    }
-</script>
-
+    <h1>Equity Sector Allocation</h1>
+    
 </body>
 </html>
+

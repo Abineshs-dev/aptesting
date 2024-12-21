@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Update Equity Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel - Update Equity Data</h1>
+    <form id="dataForm">
+        <label for="services">Services (%)</label>
+        <input type="number" id="services" placeholder="18.6" required>
+
+        <label for="healthcare">Healthcare (%)</label>
+        <input type="number" id="healthcare" placeholder="18.3" required>
+
+        <label for="others">Others (%)</label>
+        <input type="number" id="others" placeholder="18.0" required>
+
+        <label for="financial">Financial (%)</label>
+        <input type="number" id="financial" placeholder="17.1" required>
+
+        <label for="energy">Energy (%)</label>
+        <input type="number" id="energy" placeholder="14.3" required>
+
+        <label for="consumer">Consumer Staples (%)</label>
+        <input type="number" id="consumer" placeholder="7.8" required>
+
+        <label for="chemicals">Chemicals (%)</label>
+        <input type="number" id="chemicals" placeholder="6.0" required>
+
+        <button type="button" onclick="saveData()">Save Data</button>
+    </form>
+
+    <script>
+        function saveData() {
+            // Capture input values
+            const data = {
+                services: parseFloat(document.getElementById('services').value) || 0,
+                healthcare: parseFloat(document.getElementById('healthcare').value) || 0,
+                others: parseFloat(document.getElementById('others').value) || 0,
+                financial: parseFloat(document.getElementById('financial').value) || 0,
+                energy: parseFloat(document.getElementById('energy').value) || 0,
+                consumer: parseFloat(document.getElementById('consumer').value) || 0,
+                chemicals: parseFloat(document.getElementById('chemicals').value) || 0
+            };
+
+            // Store data in localStorage
+            localStorage.setItem('equityData', JSON.stringify(data));
+            alert('Data saved successfully!');
+        }
+    </script>
+</body>
+</html>
