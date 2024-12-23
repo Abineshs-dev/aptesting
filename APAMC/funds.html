@@ -7,6 +7,7 @@
   <title>AP AMC</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="general.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <style>
     body {
       font-family: Arial;
@@ -15,43 +16,17 @@
       line-height: 1.4;
     }
 
-    .breadcrum-list ul {
-      list-style: none;
-    }
-
-    .breadcrum-list ul li {
-      display: inline-block;
-      margin: 0;
-    }
-
-    .breadcrum-list {
-      border: 2px solid blue;
-      margin: 0 4%;
-      font-size: 14px;
-      opacity: 0.9;
-      font-weight: 500;
-      height: 25px;
-      width: 92%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      word-spacing: 3px;
-
-    }
-
     .section-1 {
-      border: 2px solid rgb(229, 8, 8);
       margin-top: 62px;
       width: 100%;
       height: 900px;
       display: flex;
-      background-color: lightpink;
       flex-direction: column;
     }
 
     .conatainer-2,
     .conatainer-1-5 {
-      border: 2px solid green;
+      border: 2px solid rgb(0, 0, 0);
       width: 92%;
       margin: 0 4%;
       display: flex;
@@ -69,27 +44,25 @@
     }
 
     .conatainer-3 {
-      border: 2px solid greenyellow;
+      border: 2px solid rgb(0, 0, 0);
       height: 700px;
       width: 92%;
       margin: 0 4%;
     }
 
     .section-2 {
-      border: 2px solid aqua;
+      border: 2px solid rgb(0, 0, 0);
       width: 100%;
-      height: 225vh;
+      height: 100%;
       display: flex;
-      background-color: lightpink;
+      background-color: rgb(255, 255, 255);
       flex-direction: column;
     }
 
     .container-4,
     .container-5 {
-      width: 300px;
       width: 92%;
       margin: 0 4%;
-      border: 1px solid #e61515;
       border-radius: 5px;
       background-color: #fff;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -200,6 +173,37 @@
       width: 80%;
       max-width: 600px;
     }
+
+    .funddetails {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-3 {
+      border: 2px solid rgb(0, 0, 0);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background-color: rgb(255, 255, 255);
+      flex-direction: column;
+    }
+
+    .container-6 {
+      width: 92%;
+      margin: 0 4%;
+      border: 1px solid #5900ff;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      line-height: 2;
+    }
   </style>
 </head>
 
@@ -240,37 +244,26 @@
       <div class="conatainer-3">
         <iframe title="NAV BI" width="100%" height="100%"
           src="https://app.powerbi.com/reportEmbed?reportId=74186a41-eab0-4a61-948e-a3f46c7f425f&autoAuth=true&ctid=9fc2f44c-77d7-4911-8267-8da441f7de31"
-          frameborder="0" allowFullScreen="true"></iframe>
+          frameborder="0" allowFullScreen="true">
+        </iframe>
       </div>
       <div class="conatainer-1-5">
-        <div class="funddetails">
-          <table>
+        <table>
+          <tbody class="funddetails">
             <tr>
-              <td>NAV:18-12-2024</td>
-              <td>
-                ₹11.47
-              </td>
+              <td>NAV</td>
+              <td>₹11.09</td>
             </tr>
             <tr>
-              <td>
-                Min.Invest Amount
-              </td>
-              <td>
-                ₹100
-              </td>
+              <td>Min amount</td>
+              <td>₹100</td>
             </tr>
-          </table>
-          <table>
             <tr>
-              <td>
-                Fund size
-              </td>
-              <td>
-                ₹55,976
-              </td>
+              <td>Fund size</td>
+              <td>₹50,200</td>
             </tr>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="section-2">
@@ -289,7 +282,6 @@
                   <tr>
                     <th>Name</th>
                     <th>Sector</th>
-                    <th>Instrument</th>
                     <th>Market Cap</th>
                   </tr>
                 </thead>
@@ -297,79 +289,66 @@
                   <tr>
                     <td>MANAPPURAM FINANCE LTD</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>7,200.00</td>
                   </tr>
                   <tr>
                     <td>TATA MOTORS LIMITED</td>
                     <td>Automobile</td>
-                    <td>Equity</td>
                     <td>6,895.00</td>
                   </tr>
                   <tr>
                     <td>DRREDDY</td>
                     <td>Healthcare</td>
-                    <td>Equity</td>
                     <td>6,662.00</td>
                   </tr>
                   <tr>
                     <td>IDFC FIRST BANK LIMITED</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>1,845.00</td>
                   </tr>
                   <tr>
                     <td>NIP IND ETF GOLD BEES</td>
                     <td>Commodities</td>
-                    <td>ETF</td>
                     <td>1,850.00</td>
                   </tr>
                   <tr>
                     <td>KARNATAKA BANK LIMITED</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>5,170.00</td>
                   </tr>
                   <tr>
                     <td>IDFC</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>2,235.00</td>
                   </tr>
                   <tr>
                     <td>ITC LTD</td>
                     <td>Consumer staples</td>
-                    <td>Equity</td>
                     <td>3,180.00</td>
                   </tr>
                   <tr>
                     <td>THE SOUTH INDIAN BANK LTD</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>25.00</td>
                   </tr>
                   <tr>
                     <td>EASY TRIP PLANNERS LTD</td>
                     <td>Services</td>
-                    <td>Equity</td>
                     <td>177.88</td>
                   </tr>
                   <tr>
                     <td>NMDC STEEL LTD</td>
                     <td>Metals & Mining</td>
-                    <td>Equity</td>
                     <td>121.00</td>
                   </tr>
                   <tr>
                     <td>RATTANINDIA POWER</td>
                     <td>Power</td>
-                    <td>Equity</td>
                     <td>428.00</td>
                   </tr>
                   <tr>
                     <td>BAJAJ HOUSING FINANCE</td>
                     <td>Financial</td>
-                    <td>Equity</td>
                     <td>23,000.00</td>
                   </tr>
                 </tbody>
@@ -387,6 +366,80 @@
     </div>
     </div>
   </section>
+  <section>
+    <div class="section-3">
+      <div class="container-6">
+        <h2 style="margin: 10px;">Fees</h2>
+        <P>as of current prospectus <br>
+          Management Fees 0.65% <br>
+          +Acquired Fund Fees and Expenses 0.03% <br>
+          +Other Expenses 0.01% <br>
+          ------------------------------------------------------------------- <br>
+          =Expense Ratio 0.69% <br>
+          Exit load of 1% if redeemed within 3 months</p>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-section address">
+        <h3>AP AMC</h3>
+        <p>Kovai pudhur</p>
+        <p>Coimbatore - 600207</p>
+        <a href="#" class="contact-link">Contact Us</a>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="#">Stocks</a></li>
+          <li><a href="#">Futures & Options</a></li>
+          <li><a href="#">IPO</a></li>
+          <li><a href="#">Mutual Funds</a></li>
+          <li><a href="#">NFO</a></li>
+          <li><a href="#">ETF</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Groww</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Media & Press</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Help and Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">AMC Mutual Funds</a></li>
+          <li><a href="#">Calculators</a></li>
+          <li><a href="#">Glossary</a></li>
+          <li><a href="#">Open Demat Account</a></li>
+          <li><a href="#">Groww Digest</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Web Stories</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2016-2024 Groww. All rights reserved, Built with ❤️ in India</p>
+      <div class="footer-legal">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Disclosure</a>
+        <a href="#">Regulatory</a>
+        <a href="#">Bug Bounty</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 <script>
   function toggleDetails() {
