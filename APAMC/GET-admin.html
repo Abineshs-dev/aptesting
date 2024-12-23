@@ -64,26 +64,42 @@
     </table>
 
     <script>
-        const investments = JSON.parse(localStorage.getItem('investments')) || [];
         const dataBody = document.getElementById('dataBody');
-
-        if (investments.length > 0) {
-            investments.forEach((data, index) => {
-                const row = `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${data.amount}</td>
-                        <td>${data.upiId}</td>
-                        <td>${data.userRef}</td>
-                        <td>${data.time}</td>
-                    </tr>
-                `;
-                dataBody.insertAdjacentHTML('beforeend', row);
-            });
-        } else {
-            dataBody.innerHTML = '<tr><td colspan="5">No data available</td></tr>';
+        const apiUrl = 'https://abineshs-dev.github.io/aptesting/APAMC/invest.json';
+    
+        // Fetch investments data from the hosted JSON file
+        async function fetchInvestments() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Failed to fetch data');
+                const investments = await response.json();
+    
+                if (investments && investments.length > 0) {
+                    investments.forEach((data, index) => {
+                        const row = `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${data.amount}</td>
+                                <td>${data.upiId}</td>
+                                <td>${data.userRef}</td>
+                                <td>${data.time}</td>
+                            </tr>
+                        `;
+                        dataBody.insertAdjacentHTML('beforeend', row);
+                    });
+                } else {
+                    dataBody.innerHTML = '<tr><td colspan="5">No data available</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error fetching investments:', error);
+                dataBody.innerHTML = '<tr><td colspan="5">Error loading data</td></tr>';
+            }
         }
-    </script>
+    
+        // Load investments on page load
+        fetchInvestments();
+    </script>    
+    
 </body>
 
 </html>
