@@ -121,30 +121,46 @@
     </form>
   </div>
   <script>
-    document.getElementById('investmentForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent default form submission
+    document.getElementById('investmentForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent default form submission
 
-      // Get form values
-      const amount = document.getElementById('amount').value;
-      const upiId = document.getElementById('upiId').value;
-      const userRef = document.getElementById('userRef').value;
+        // Get form values
+        const amount = document.getElementById('amount').value;
+        const upiId = document.getElementById('upiId').value;
+        const userRef = document.getElementById('userRef').value;
 
-      // Save data in localStorage (to simulate saving to a database)
-      const investmentData = {
-        amount: amount,
-        upiId: upiId,
-        userRef: userRef,
-        time: new Date().toLocaleString()
-      };
+        // Create investment data
+        const investmentData = {
+            amount: amount,
+            upiId: upiId,
+            userRef: userRef,
+            time: new Date().toLocaleString()
+        };
 
-      let investments = JSON.parse(localStorage.getItem('investments')) || [];
-      investments.push(investmentData);
-      localStorage.setItem('investments', JSON.stringify(investments));
+        // Send data to hosted endpoint
+        try {
+            const response = await fetch('https://abineshs-dev.github.io/aptesting/APAMC/invest.json', {
+                method: 'POST', // Replace this with actual backend processing logic
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(investmentData),
+            });
 
-      // Redirect to Payment Page
+            if (!response.ok) {
+                throw new Error('Failed to save data');
+            }
+            alert('Investment data submitted successfully');
+        } catch (error) {
+            console.error('Error submitting investment data:', error);
+            alert('Failed to submit investment data');
+        }
+        // Redirect to Payment Page
       window.location.href = `payment.html?amount=${amount}&upiId=${upiId}&userRef=${userRef}`;
+  
     });
-  </script>
+
+      </script>
 </body>
 
 </html>
