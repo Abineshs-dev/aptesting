@@ -180,6 +180,12 @@
                 </tbody>
             </table>
         </div>
+        <div class="container">
+            <label for="navInput">Enter Today's NAV:</label>
+            <input type="number" id="navInput" placeholder="Enter NAV" step="0.01">
+            <button id="updateNav">Update NAV</button>
+            <p id="status" style="margin-top: 15px; color: #1e88e5;"></p>
+          </div> 
 
         <!-- Performance Analysis -->
         <div class="performance-analysis">
@@ -204,6 +210,22 @@
     </div>
 </body>
 <script>
+          // Store NAV in localStorage
+
+    document.getElementById('updateNav').addEventListener('click', () => {
+      const nav = document.getElementById('navInput').value;
+
+      if (!nav) {
+        document.getElementById('status').textContent = "Please enter a valid NAV.";
+        return;
+      }
+
+      // Store NAV in localStorage
+      localStorage.setItem('fundNAV', nav);
+      document.getElementById('status').textContent = "NAV updated successfully!";
+    });
+
+    // Part 2
     const investedAmount = 2600; // Default invested amount
     const units = 243.427;   // Default units
 
@@ -235,7 +257,7 @@
     updatePortfolio();
 
     // Update portfolio every 2 seconds to reflect NAV updates
-    setInterval(updatePortfolio, 20000);
+    setInterval(updatePortfolio, 3000);
 </script>
 
 </html>

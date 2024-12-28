@@ -121,46 +121,26 @@
     </form>
   </div>
   <script>
-    document.getElementById('investmentForm').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent default form submission
+    const investments = JSON.parse(localStorage.getItem('investments')) || [];
+    const dataBody = document.getElementById('dataBody');
 
-        // Get form values
-        const amount = document.getElementById('amount').value;
-        const upiId = document.getElementById('upiId').value;
-        const userRef = document.getElementById('userRef').value;
-
-        // Create investment data
-        const investmentData = {
-            amount: amount,
-            upiId: upiId,
-            userRef: userRef,
-            time: new Date().toLocaleString()
-        };
-
-        // Send data to hosted endpoint
-        try {
-            const response = await fetch('https://abineshs-dev.github.io/aptesting/APAMC/invest.json', {
-                method: 'POST', // Replace this with actual backend processing logic
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(investmentData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to save data');
-            }
-            alert('Investment data submitted successfully');
-        } catch (error) {
-            console.error('Error submitting investment data:', error);
-            alert('Failed to submit investment data');
-        }
-        // Redirect to Payment Page
-      window.location.href = `payment.html?amount=${amount}&upiId=${upiId}&userRef=${userRef}`;
-  
-    });
-
-      </script>
+    if (investments.length > 0) {
+        investments.forEach((data, index) => {
+            const row = 
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${data.amount}</td>
+                    <td>${data.upiId}</td>
+                    <td>${data.userRef}</td>
+                    <td>${data.time}</td>
+                </tr>
+            ;
+            dataBody.insertAdjacentHTML('beforeend', row);
+        });
+    } else {
+        dataBody.innerHTML = '<tr><td colspan="5">No data available</td></tr>';
+    }
+</script>
 </body>
 
 </html>

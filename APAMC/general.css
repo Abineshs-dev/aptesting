@@ -80,10 +80,7 @@ a {
 .site-footer {
     background-color: #1a1a1a;
     color: #fff;
-    width: 92%;
-    margin: 0 4%;
-    border: 1px solid #e61515;
-    border-radius: 5px;
+    padding: 20px;
 
 }
 
