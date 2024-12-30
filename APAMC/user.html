@@ -68,6 +68,29 @@
         .login-container button:hover {
             background: #0056b3;
         }
+
+        .signup-button {
+            background-color: rgb(46, 164, 79);
+            color: white;
+            height: 30px;
+            width: 100px;
+            margin: 10px 10px 10px 120px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .signup-button:hover {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
+        }
+
+        .create-account {
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            background-color: rgb(46, 164, 79);
+        }
     </style>
 </head>
 
@@ -96,6 +119,7 @@
             <input type="password" id="password" placeholder="Enter Password">
             <button onclick="login()">Login</button>
         </div>
+        <button class="signup-button"><a class="create-account" href="signup.html">Create account</a></button>
 </body>
 
 </html>
@@ -108,6 +132,7 @@
         FA1004: { password: "1004", redirectUrl: "user4.html" },
         FA1005: { password: "1005", redirectUrl: "user5.html" },
         FA1006: { password: "1006", redirectUrl: "user6.html" },
+        FA1008: { password: "1008", redirectUrl: "user8.html" },
     }
     function login() {
         // Get input values

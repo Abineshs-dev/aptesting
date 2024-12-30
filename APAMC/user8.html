@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mutual Fund Portfolio</title>
     <link rel="stylesheet" href="general-user.css">
-
 </head>
 
 <body>
@@ -17,24 +16,26 @@
     <div class="container">
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="profile/1731244703298.jpg" alt="Profile Picture">
+            <img src="Asset/1712412180657.jpg" alt="Profile Picture">
             <div>
-                <h2>Naveen krishana</h2>
-                <p>Folio Number:100003</p>
-                <p>Email: naveenkrishana20@gmail.com</p>
+                <h2>Jai surya</h2>
+                <p>FA:1008</p>
+                <p>Email: -@gmail.com</p>
             </div>
         </div>
 
         <!-- Portfolio Summary -->
         <div class="portfolio-summary">
             <h3>Portfolio Summary</h3>
-            <p>Total Investment: <strong>₹22,258.32</strong></p>
-            <p>Current Value: <strong>₹22,039.73</strong></p>
-            <p>Overall Gain/Loss: <strong style="color: green;">-1%</strong></p>
+            <p>Total Investment: <strong>₹2,000.00</strong></p>
+            <p>Current Value: <strong>₹2,000.00</strong></p>
+            <p>Overall Gain/Loss: <strong style="color: green;">0%</strong></p>
         </div>
 
         <!-- Mutual Funds Table -->
-        <header>Client Mutual Fund Portfolio</header>
+        <header>Client Portfolio</header>
+        <!--
+        FINANCIAL ACCOUNT FOR CONSULTATION 
         <div class="container">
             <h3>Fund Performance</h3>
             <table>
@@ -50,8 +51,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td id="investedAmount">22258.32</td>
-                        <td id="units">1,926.40</td>
+                        <td id="investedAmount">2600</td>
+                        <td id="units">243.427</td>
                         <td id="currentNAV">-</td>
                         <td id="currentValue">-</td>
                         <td id="returns">-</td>
@@ -64,83 +65,26 @@
             <button id="updateNav">Update NAV</button>
             <p id="status" style="margin-top: 15px; color: #1e88e5;"></p>
         </div>
+        -->
 
-        <!-- Transaction  -->
-        <div class="container-transaction">
-            <h1 class="h1t">Transaction History</h1>
 
-            <div class="transaction">
-                <div class="details">
-                    <span class="action">Invested</span>
-                    <span class="date">14 Mar 2024</span>
-                </div>
-                <div class="info">
-                    <span>Units: <strong>37.146</strong></span>
-                    <span>NAV: <strong>10.23</strong></span>
-                </div>
-                <div class="amount">
-                    <span>₹380</span>
-                    <span class="status completed">COMPLETED</span>
-                </div>
-            </div>
-            <div class="transaction">
-                <div class="details">
-                    <span class="action">Invested</span>
-                    <span class="date">06 Mar 2024</span>
-                </div>
-                <div class="info">
-                    <span>Units: <strong>9.141</strong></span>
-                    <span>NAV: <strong>10.94</strong></span>
-                </div>
-                <div class="amount">
-                    <span>₹100</span>
-                    <span class="status completed">COMPLETED</span>
-                </div>
-            </div>
-            <div class="transaction">
-                <div class="details">
-                    <span class="action">Invested</span>
-                    <span class="date">29 Feb 2024</span>
-                </div>
-                <div class="info">
-                    <span>Units: <strong>19.324</strong></span>
-                    <span>NAV: <strong>10.35</strong></span>
-                </div>
-                <div class="amount">
-                    <span>₹200</span>
-                    <span class="status completed">COMPLETED</span>
-                </div>
-            </div>
-            <div class="transaction">
-                <div class="details">
-                    <span class="action">Invested</span>
-                    <span class="date">01 Jan 2024</span>
-                </div>
-                <div class="info">
-                    <span>Units: <strong>115.00</strong></span>
-                    <span>NAV: <strong>10.00</strong></span>
-                </div>
-                <div class="amount">
-                    <span>₹1,150</span>
-                    <span class="status completed">COMPLETED</span>
-                </div>
-            </div>
-            <!-- Performance Analysis -->
-            <div class="performance-analysis">
-                <h3>Performance Analysis</h3>
-                <div class="performance-chart">
-                    <a href="Home.html">
-                        <p>(Redirect to Home)</p>
-                    </a>
-                </div>
+        <!-- Performance Analysis -->
+        <div class="performance-analysis">
+            <h3>Performance Analysis</h3>
+            <div class="performance-chart">
+                <a href="Home.html">
+                    <p>(Redirect to Home)</p>
+                </a>
             </div>
 
-            <!-- Action Buttons -->
-            <div>
-                <a href="invest.html" class="btn">Add Funds</a>
-                <a href="reedem.html" class="btn">Redeem</a>
-            </div>
         </div>
+
+        <!-- Action Buttons -->
+        <div>
+            <a href="invest.html" class="btn">Add Funds</a>
+            <a href="reedem.html" class="btn">Redeem</a>
+        </div>
+    </div>
 </body>
 <script>
     // Store NAV in localStorage
@@ -159,8 +103,8 @@
     });
 
     // Part 2
-    const investedAmount = 22258.32; // Default invested amount
-    const units = 1926.401;   // Default units
+    const investedAmount = 2600; // Default invested amount
+    const units = 243.427;   // Default units
 
     function updatePortfolio() {
         const nav = localStorage.getItem('fundNAV'); // Get updated NAV from localStorage
@@ -188,6 +132,7 @@
 
     // Call updatePortfolio when the page loads
     updatePortfolio();
+
     // Update portfolio every 2 seconds to reflect NAV updates
     setInterval(updatePortfolio, 1000);
 </script>
